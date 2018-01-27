@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context="com.hawker.yangtianqi.demo.IntentActivity">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="打开图片"
+        android:id="@+id/btnImageIntent"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="44dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="打开窗体"
+        android:id="@+id/btnImageNormal"
+        android:layout_above="@+id/btnImageIntent"
+        android:layout_alignParentStart="true"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="打电话"
+        android:id="@+id/btnPhoneIntent"
+        android:layout_below="@+id/btnImageIntent"
+       />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="打开网址"
+        android:id="@+id/btnWebIntent"
+        android:layout_below="@+id/btnPhoneIntent"
+        />
+</LinearLayout>
