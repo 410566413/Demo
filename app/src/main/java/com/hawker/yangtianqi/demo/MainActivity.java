@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
     private Button btnReadContact;
     private Button btnStartIntent;
     private Button btnLayoutIntent;
+    private Button btnComponentIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +66,11 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         btnLayoutIntent=(Button)findViewById(R.id.btnLayoutIntent);
         btnLayoutIntent.setOnClickListener(this);
 
+        btnComponentIntent=(Button)findViewById(R.id.btnComponentIntent);
+        btnComponentIntent.setOnClickListener(this);
+
+//        btnComponentIntent=(Button)findViewById(R.id.btnComponentIntent);
+//        btnComponentIntent.setOnClickListener(this);
     }
 
     @Override
@@ -92,6 +98,9 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
             case R.id.btnLayoutIntent:
                 startLayout();
                 break;
+            case R.id.btnComponentIntent:
+                startComponent();
+                break;
             default:
                 break;
         }
@@ -114,6 +123,12 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
     private void startLayout(){
         Log.i(TAG,">>>>>>>>>>>>>>>>>>>>startLayout");
         Intent intent= new Intent(MainActivity.this,LayoutActivity.class);
+        startActivity(intent);
+    }
+
+    private void startComponent(){
+        Log.i(TAG,">>>>>>>>>>>>>>>>>>>>startComponent");
+        Intent intent= new Intent(MainActivity.this,ComponentActivity.class);
         startActivity(intent);
     }
 }
