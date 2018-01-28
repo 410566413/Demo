@@ -42,8 +42,9 @@
         <activity android:name=".ComponentActivity" />
         <activity android:name=".OtherCompActivity" />
         <activity android:name=".StarTopActivity" />
-        <activity android:name=".StarDrinkActivity"></activity>
-        <activity android:name=".StarCatalogActivity"></activity>
+        <activity android:name=".StarDrinkActivity" />
+        <activity android:name=".StarCatalogActivity" />
+        <activity android:name=".FoodCatalogActivity"></activity>
     </application>
 
 </manifest>

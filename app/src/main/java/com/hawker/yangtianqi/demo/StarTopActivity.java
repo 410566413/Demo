@@ -22,7 +22,11 @@ public class StarTopActivity extends AppCompatActivity {
                 if (position==0){
                     Intent intent = new Intent(StarTopActivity.this,StarCatalogActivity.class);
                     startActivity(intent);
+                }else  if (position==1){
+                    Intent intent = new Intent(StarTopActivity.this,FoodCatalogActivity.class);
+                    startActivity(intent);
                 }
+
             }
         };
         listView = (ListView) findViewById(R.id.listMenus);
