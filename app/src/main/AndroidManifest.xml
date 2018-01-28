@@ -40,7 +40,10 @@
         </activity>
         <activity android:name=".LayoutActivity" />
         <activity android:name=".ComponentActivity" />
-        <activity android:name=".OtherCompActivity"></activity>
+        <activity android:name=".OtherCompActivity" />
+        <activity android:name=".StarTopActivity" />
+        <activity android:name=".StarDrinkActivity"></activity>
+        <activity android:name=".StarCatalogActivity"></activity>
     </application>
 
 </manifest>

@@ -144,4 +144,9 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         Intent intent= new Intent(MainActivity.this,OtherCompActivity.class);
         startActivity(intent);
     }
+
+    public void btnAdapterAppClick(View view){
+        Intent intent= new Intent(MainActivity.this,StarTopActivity.class);
+        startActivity(intent);
+    }
 }

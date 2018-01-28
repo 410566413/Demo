@@ -29,9 +29,8 @@
         android:layout_height="wrap_content"
         android:text="启动服务窗体"
         android:id="@+id/btnService"
-        android:layout_below="@+id/btnCust"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="10dp" />
+        android:layout_alignTop="@+id/btnCust"
+        android:layout_toEndOf="@+id/btnComponentIntent" />
 
     <Button
         android:layout_width="wrap_content"
@@ -46,9 +45,8 @@
         android:layout_height="wrap_content"
         android:text="读取联系人信息"
         android:id="@+id/btnReadContact"
-        android:layout_below="@+id/btnBraod"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="10dp" />
+        android:layout_alignTop="@+id/btnBraod"
+        android:layout_alignEnd="@+id/btnService" />
 
     <Button
         android:layout_width="wrap_content"
@@ -64,9 +62,8 @@
         android:layout_height="wrap_content"
         android:text="布局实例"
         android:id="@+id/btnLayoutIntent"
-        android:layout_below="@+id/btnStartIntent"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="10dp" />
+        android:layout_alignTop="@+id/btnStartIntent"
+        android:layout_alignStart="@+id/btnReadContact" />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -80,7 +77,16 @@
         android:layout_height="wrap_content"
         android:text="其他组件实例"
         android:id="@+id/btnOtherCompIntent"
-        android:layout_below="@+id/btnComponentIntent"
+        android:layout_alignTop="@+id/btnComponentIntent"
+        android:layout_toEndOf="@+id/btnComponentIntent"
+        android:layout_marginStart="37dp" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="适配器实例"
+        android:id="@+id/btnAdapterApp"
+        android:onClick="btnAdapterAppClick"
+        android:layout_below="@+id/btnOtherCompIntent"
         android:layout_alignParentStart="true"
         android:layout_marginTop="10dp" />
 </RelativeLayout>
