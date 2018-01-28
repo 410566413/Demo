@@ -5,4 +5,26 @@
     android:orientation="vertical"
     android:id="@+id/layoutLinearVertical">
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:hint="消息接收人"
+        android:id="@+id/textTo" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:gravity="top"
+        android:hint="输入消息内容"
+        android:layout_weight="1"
+        android:id="@+id/textMsg" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="发送消息"
+        android:layout_gravity="right"
+        android:id="@+id/btnSend" />
 </LinearLayout>

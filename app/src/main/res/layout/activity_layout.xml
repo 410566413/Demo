@@ -30,8 +30,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button3"
+        android:text="grid网格布局"
+        android:id="@+id/btnShowGrid"
         android:layout_below="@+id/btnShowLinearVetaical"
         android:layout_alignParentStart="true" />
 
@@ -40,6 +40,6 @@
         android:layout_height="wrap_content"
         android:text="New Button"
         android:id="@+id/button4"
-        android:layout_below="@+id/button3"
+        android:layout_below="@+id/btnShowGrid"
         android:layout_alignParentStart="true" />
 </RelativeLayout>

@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
     private Button btnStartIntent;
     private Button btnLayoutIntent;
     private Button btnComponentIntent;
+    private Button btnOtherCompIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,8 +70,13 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         btnComponentIntent=(Button)findViewById(R.id.btnComponentIntent);
         btnComponentIntent.setOnClickListener(this);
 
-//        btnComponentIntent=(Button)findViewById(R.id.btnComponentIntent);
-//        btnComponentIntent.setOnClickListener(this);
+        btnOtherCompIntent=(Button)findViewById(R.id.btnOtherCompIntent);
+        btnOtherCompIntent.setOnClickListener(this);
+
+//        btnOtherCompIntent=(Button)findViewById(R.id.btnOtherCompIntent);
+//        btnOtherCompIntent.setOnClickListener(this);
+//        btnOtherCompIntent=(Button)findViewById(R.id.btnOtherCompIntent);
+//        btnOtherCompIntent.setOnClickListener(this);
     }
 
     @Override
@@ -101,6 +107,9 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
             case R.id.btnComponentIntent:
                 startComponent();
                 break;
+            case R.id.btnOtherCompIntent:
+                startOtherComponent();
+                break;
             default:
                 break;
         }
@@ -129,6 +138,10 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
     private void startComponent(){
         Log.i(TAG,">>>>>>>>>>>>>>>>>>>>startComponent");
         Intent intent= new Intent(MainActivity.this,ComponentActivity.class);
+        startActivity(intent);
+    }
+    public void startOtherComponent(){
+        Intent intent= new Intent(MainActivity.this,OtherCompActivity.class);
         startActivity(intent);
     }
 }
