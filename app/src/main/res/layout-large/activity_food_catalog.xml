@@ -14,12 +14,12 @@
         android:layout_width="0dp"
         android:layout_height="match_parent">
     </fragment>
-    <!--<FrameLayout-->
-        <!--android:id="@+id/frameContainer"-->
-        <!--android:layout_weight="3"-->
-        <!--android:layout_width="0dp"-->
-        <!--android:layout_height="match_parent">-->
-    <!--</FrameLayout>-->
+    <FrameLayout
+        android:id="@+id/frameContainer"
+        android:layout_weight="3"
+        android:layout_width="0dp"
+        android:layout_height="match_parent">
+    </FrameLayout>
     <!--<fragment-->
         <!--class="com.hawker.yangtianqi.demo.FoodDetailFragment"-->
         <!--android:id="@+id/foodDetailId"-->
