@@ -45,7 +45,9 @@
         <activity android:name=".StarDrinkActivity" />
         <activity android:name=".StarCatalogActivity" />
         <activity android:name=".FoodCatalogActivity" />
-        <activity android:name=".FoodCatalogSmallActivity"></activity>
+        <activity android:name=".FoodCatalogSmallActivity" />
+        <activity android:name=".MessageActivity"
+            android:parentActivityName=".MainActivity"></activity>
     </application>
 
 </manifest>
