@@ -1,5 +1,6 @@
 package com.hawker.yangtianqi.demo;
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 //import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -24,7 +25,16 @@ public class FoodDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         if (savedInstanceState !=null){
             foodId = savedInstanceState.getInt("foodId");
+        } else {
+            //创建调用秒表的事物管理器
+            FragmentTransaction ft =getChildFragmentManager().beginTransaction();
+            WatchFragment watchFragment = new WatchFragment();
+            ft.replace(R.id.watch_container,watchFragment);
+            ft.addToBackStack(null);
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            ft.commit();
         }
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_food_detail, container, false);
     }
