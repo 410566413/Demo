@@ -5,4 +5,20 @@
         <item>食物</item>
         <item>装饰品</item>
     </string-array>
+    <string-array name="option_drink">
+        <item>乌龙茶</item>
+        <item>珍珠奶茶</item>
+        <item>波霸奶茶</item>
+    </string-array>
+    <string-array name="option_food">
+        <item>黄焖鸡</item>
+        <item>肯德基</item>
+        <item>全聚德</item>
+    </string-array>
+    <string-array name="option_beay">
+        <item>lv抱抱</item>
+        <item>看艾尔香水</item>
+        <item>柒牌男装</item>
+    </string-array>
+
 </resources>

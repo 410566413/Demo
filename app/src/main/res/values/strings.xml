@@ -5,4 +5,7 @@
     <string name="action_settings">设置</string>
     <string name="menu_create_message">消息</string>
     <string name="menu_share">分享</string>
+    <string name="title_top">导航栏</string>
+    <string name="drawer_open">打开抽屉</string>
+    <string name="drawer_close">关闭抽屉</string>
 </resources>
