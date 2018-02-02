@@ -32,4 +32,13 @@
         android:layout_below="@+id/textDrinkName"
         android:layout_alignParentStart="true"
         android:layout_marginTop="10dp" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="搜藏"
+        android:id="@+id/CbxFavorite"
+        android:onClick="onClickCbxFavorite"
+        android:layout_below="@+id/textDrinkDesc"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

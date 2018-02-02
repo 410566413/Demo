@@ -23,4 +23,21 @@
         android:entries="@array/options"
         android:layout_below="@+id/imageView2"
         android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="已收藏列表"
+        android:id="@+id/textView4"
+        android:layout_below="@+id/listMenus"
+        android:layout_alignParentStart="true" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/favoriteList"
+        android:layout_below="@+id/textView4"
+        android:layout_alignParentStart="true" />
+
+
 </RelativeLayout>
