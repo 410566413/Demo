@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -84,18 +85,56 @@ public class StarDrinkActivity extends AppCompatActivity {
 
     public void onClickCbxFavorite(View view){
         int id = getIntent().getIntExtra(EXTRA_DRINKNO,0);
-        CheckBox favorite= (CheckBox) findViewById(R.id.CbxFavorite);
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("favorite",favorite.isChecked());
-        SQLiteOpenHelper helper = new DatabaseHelper(this);
-        try {
-            SQLiteOpenHelper sqLiteOpenHelper = new DatabaseHelper(this);
-            db = sqLiteOpenHelper.getWritableDatabase();
-            db.update("drink",contentValues,"_id=?",new String[]{Integer.toString(id)});
-            db.close();
-        }catch (SQLException e){
-            Toast toast = Toast.makeText(this,"database unavailable",Toast.LENGTH_SHORT);
-            toast.show();
-        }
+//        CheckBox favorite= (CheckBox) findViewById(R.id.CbxFavorite);
+//        ContentValues contentValues = new ContentValues();
+//        contentValues.put("favorite",favorite.isChecked());
+//        SQLiteOpenHelper helper = new DatabaseHelper(this);
+//        try {
+//            SQLiteOpenHelper sqLiteOpenHelper = new DatabaseHelper(this);
+//            db = sqLiteOpenHelper.getWritableDatabase();
+//            db.update("drink",contentValues,"_id=?",new String[]{Integer.toString(id)});
+//            db.close();
+//        }catch (SQLException e){
+//            Toast toast = Toast.makeText(this,"database unavailable",Toast.LENGTH_SHORT);
+//            toast.show();
+//        }
+        new DatabaseAsync().execute(id);
     }
+
+
+    private class DatabaseAsync extends AsyncTask<Integer,Void,Boolean> {
+
+        ContentValues contentValues ;
+        @Override
+        protected void onPreExecute(){
+            //运行数据库参数准备
+            CheckBox checkBox = (CheckBox) findViewById(R.id.CbxFavorite);
+            contentValues = new ContentValues();
+            contentValues.put("favorite",checkBox.isChecked());
+        }
+
+        @Override
+        protected Boolean doInBackground(Integer... params) {
+            int id= getIntent().getIntExtra(EXTRA_DRINKNO,0);
+            SQLiteOpenHelper helper = new DatabaseHelper(StarDrinkActivity.this);
+            try {
+                SQLiteDatabase db = helper.getWritableDatabase();
+                db.update("drink",contentValues,"_id=?",new String[]{Integer.toString(id)});
+                db.close();
+                return  true;
+            }catch (SQLException e){
+                return  false;
+            }
+        }
+
+
+        @Override
+        protected void onPostExecute(Boolean sucess){
+            //执行
+            if (!sucess) {
+                Toast toast = Toast.makeText(StarDrinkActivity.this,"数据库无法访问",Toast.LENGTH_SHORT);
+                toast.show();
+            }
+            }
+        }
 }

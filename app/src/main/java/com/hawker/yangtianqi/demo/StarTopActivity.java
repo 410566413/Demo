@@ -1,14 +1,17 @@
 package com.hawker.yangtianqi.demo;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.CheckBox;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
@@ -68,5 +71,23 @@ public class StarTopActivity extends AppCompatActivity {
             Toast toast = Toast.makeText(this,"database unavailable",Toast.LENGTH_SHORT);
             toast.show();
         }
+    }
+
+    @Override
+    public  void onRestart(){
+        super.onRestart();
+        SQLiteOpenHelper helper = new DatabaseHelper(this);
+
+        db = helper.getWritableDatabase();
+        Cursor newCursor = db.query("drink",
+                new String[]{"_id","name"},
+                "favorite =1 ",
+                null,null,null,null);
+
+        ListView listViewRestart = (ListView) findViewById(R.id.favoriteList);
+        CursorAdapter adapterChange  = (CursorAdapter) listViewRestart.getAdapter();
+        adapterChange.changeCursor(newCursor);
+        listViewRestart.setAdapter(adapterChange);
+
     }
 }

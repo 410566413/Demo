@@ -46,9 +46,14 @@
         <activity android:name=".StarCatalogActivity" />
         <activity android:name=".FoodCatalogActivity" />
         <activity android:name=".FoodCatalogSmallActivity" />
-        <activity android:name=".MessageActivity"
+        <activity
+            android:name=".MessageActivity"
             android:parentActivityName=".MainActivity"
-            android:theme="@android:style/Theme.Holo"></activity>
+            android:theme="@android:style/Theme.Holo" />
+
+        <service
+            android:name=".service.DelayMessageIntentService"
+            android:exported="false"></service>
     </application>
 
 </manifest>
