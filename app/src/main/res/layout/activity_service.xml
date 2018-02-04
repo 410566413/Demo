@@ -51,8 +51,25 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="启动GPS服务"
+        android:id="@+id/btnStartGpsService"
+        android:layout_below="@+id/btnStartCallbackService"
+        android:layout_alignStart="@+id/btnStartCallbackService" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="获取服务数据"
         android:id="@+id/btnGetNum"
         android:layout_below="@+id/btnUnBind"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.0 miles"
+        android:id="@+id/textDistance"
+        android:textSize="30dp"
+        android:layout_below="@+id/btnStartGpsService"
+        android:layout_alignParentStart="@+id/btnStartGpsService" />
 </RelativeLayout>
