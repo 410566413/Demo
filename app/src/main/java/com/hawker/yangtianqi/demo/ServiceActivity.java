@@ -11,17 +11,22 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.hawker.yangtianqi.demo.service.DelayMessageIntentService;
 import com.hawker.yangtianqi.demo.service.EchoService;
 import com.hawker.yangtianqi.demo.service.EchoServiceBinder;
 
 public class ServiceActivity extends AppCompatActivity implements View.OnClickListener, ServiceConnection {
     final static String TAG="ServiceActivity";
 
+
     private Button btnStartService;
     private Button btnStopService;
     private Button btnBind;
     private Button btnUnBind;
     private Button btnGetNum;
+    private Button btnStartCallbackService;
+
+
     private EchoService echoService=null;
     private Intent serviceiIntent;
     @Override
@@ -42,6 +47,9 @@ public class ServiceActivity extends AppCompatActivity implements View.OnClickLi
 
         btnGetNum=(Button)findViewById(R.id.btnGetNum);
         btnGetNum.setOnClickListener(this);
+
+        btnStartCallbackService=(Button)findViewById(R.id.btnStartCallbackService);
+        btnStartCallbackService.setOnClickListener(this);
     }
 
     @Override
@@ -60,6 +68,9 @@ public class ServiceActivity extends AppCompatActivity implements View.OnClickLi
                 unbindService(this);
                 echoService=null;
                 break;
+            case R.id.btnStartCallbackService:
+                callbackService();
+                break;
             case R.id.btnGetNum:
                 if(echoService!=null){
                     Log.i(TAG,"当前服务数据为:::"+echoService.getNum());
@@ -69,6 +80,12 @@ public class ServiceActivity extends AppCompatActivity implements View.OnClickLi
                 break;
 
         }
+    }
+
+    private void callbackService() {
+        Intent intent = new Intent(this,DelayMessageIntentService.class);
+        intent.putExtra(DelayMessageIntentService.EXTRA_MESSAGE,getResources().getString(R.string.drawer_open));
+        startService(intent);
     }
 
     @Override

@@ -43,6 +43,14 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="启动回调服务"
+        android:id="@+id/btnStartCallbackService"
+        android:layout_below="@+id/btnStopService"
+        android:layout_alignStart="@+id/btnStopService" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="获取服务数据"
         android:id="@+id/btnGetNum"
         android:layout_below="@+id/btnUnBind"
