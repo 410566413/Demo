@@ -39,6 +39,9 @@ public class StarTopActivity extends AppCompatActivity {
                 }else  if (position==1){
                     Intent intent = new Intent(StarTopActivity.this,FoodCatalogActivity.class);
                     startActivity(intent);
+                }else  if (position==2){
+                    Intent intent = new Intent(StarTopActivity.this,BeautyRecyclerFragment.class);
+                    startActivity(intent);
                 }
 
             }
