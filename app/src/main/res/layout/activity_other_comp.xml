@@ -62,7 +62,24 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/autoCompleteTextView"
-            android:text="提交答案" />
+            android:text="提交进度" />
+
+        <Button
+            android:id="@+id/btnSelectDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="选择日期"
+            android:layout_above="@+id/editText"
+            android:layout_toEndOf="@+id/toggleButton" />
+
+        <Button
+            android:id="@+id/btnSelectTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="选择时间"
+            android:layout_marginStart="27dp"
+            android:layout_below="@+id/autoCompleteTextView"
+            android:layout_toEndOf="@+id/btnSelectDate" />
 
         <AutoCompleteTextView
             android:id="@+id/autoCompleteTextView"
@@ -126,11 +143,42 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="120dp"
-            android:layout_height="420dp"
+            android:layout_width="wrap_content"
+            android:layout_height="120dp"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/spinner"
             android:contentDescription="绅士头像"
             android:src="@drawable/head1" />
+
+        <SeekBar
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/seekBar"
+            android:layout_below="@+id/imageView"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/seekBarValue"
+            android:layout_alignBottom="@+id/seekBar"
+            android:layout_toEndOf="@+id/seekBar" />
+
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ratingBar"
+            android:onClick="ratingBarClick"
+            android:layout_below="@+id/seekBar"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/ratingBarText"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/seekBarValue" />
     </RelativeLayout>
 </ScrollView>

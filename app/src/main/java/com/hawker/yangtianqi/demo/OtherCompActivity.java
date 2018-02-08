@@ -1,6 +1,10 @@
 package com.hawker.yangtianqi.demo;
 
+import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
+import android.app.TimePickerDialog;
 import android.os.Bundle;
+import android.renderscript.Sampler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -9,10 +13,15 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
+import android.widget.RatingBar;
+import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -28,15 +37,58 @@ public class OtherCompActivity extends AppCompatActivity implements View.OnClick
     private  Spinner spinner;
     private ArrayAdapter<String> adapter;//创建一个数组适配器
     private List<String> list = new ArrayList<String>();//创建一个String类型的数组列表。
+    private Button btnSelectDate;
+    private Button btnSelectTime;
+    private SeekBar seekBar;
+    private TextView seekBarValue;
+    private ProgressDialog progressDialog;
+
+    private  RatingBar ratingBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_other_comp);
 
-
         btnSubmit = (Button) findViewById(R.id.btnSubmit);
         btnSubmit.setOnClickListener(this);
+
+        btnSelectDate = (Button) findViewById(R.id.btnSelectDate);
+        btnSelectDate.setOnClickListener(this);
+        btnSelectTime = (Button) findViewById(R.id.btnSelectTime);
+        btnSelectTime.setOnClickListener(this);
+
+
+        ratingBar = (RatingBar) findViewById(R.id.ratingBar);
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                TextView ratingBarText = (TextView) findViewById(R.id.ratingBarText);
+                ratingBarText.setText(String.valueOf(rating));
+            }
+        });
+
+
+        seekBar = (SeekBar) findViewById(R.id.seekBar);
+        seekBar.setOnSeekBarChangeListener(
+                new SeekBar.OnSeekBarChangeListener() {
+                    @Override
+                    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                        seekBarValue.setText(String.format("当前进度为：%d",progress));
+                    }
+
+                    @Override
+                    public void onStartTrackingTouch(SeekBar seekBar) {
+
+                    }
+
+                    @Override
+                    public void onStopTrackingTouch(SeekBar seekBar) {
+
+                    }
+                });
+        seekBarValue = (TextView) findViewById(R.id.seekBarValue);
 
         //初始化自动补全的数据
         arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line);
@@ -112,22 +164,50 @@ public class OtherCompActivity extends AppCompatActivity implements View.OnClick
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btnSubmit:
-                getRaioValue();
+                getProgressValue();
                 break;
-//            case R.id.btnAddPerson:
-//                addPerson();
-//                break;
-//            case R.id.btnAddPic:
-//                addPic3();
-//                break;
+            case R.id.btnSelectDate:
+                selectDate();
+                break;
+            case R.id.btnSelectTime:
+                selectTime();
+                break;
             default:
                 break;
         }
     }
+    private void selectDate() {
+        new DatePickerDialog(OtherCompActivity.this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                btnSelectDate.setText(String.format("%d-%d-%d",year,monthOfYear,dayOfMonth));
+            }
+        },2018,11,1).show();
+    }
+
+    private void selectTime() {
+      new TimePickerDialog(OtherCompActivity.this, new TimePickerDialog.OnTimeSetListener() {
+          @Override
+          public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+            btnSelectTime.setText(String.format("%d:%d",hourOfDay,minute));
+          }
+      },10,25,true).show();
+    }
 
 
-    public void  getRaioValue(){
-
+    public void  getProgressValue(){
+        progressDialog = ProgressDialog.show(OtherCompActivity.this,"正在提交","数据正在提交，请稍等");
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                progressDialog.dismiss();
+            }
+        }).start();
     }
 
     @Override
