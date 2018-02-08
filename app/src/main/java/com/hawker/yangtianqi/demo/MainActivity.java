@@ -3,6 +3,7 @@ package com.hawker.yangtianqi.demo;
 import android.content.Intent;
 import android.database.Cursor;
 import android.provider.ContactsContract;
+import android.provider.Settings;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -202,4 +203,24 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         }
 
     }
+
+    private long lastClickTime=0;
+
+    @Override
+    public  void onBackPressed(){
+//        super.onBackPressed();
+        if (lastClickTime<=0){
+            Toast.makeText(this,"再按一次后退键",Toast.LENGTH_SHORT).show();
+            lastClickTime = System.currentTimeMillis();
+        }else {
+            long currentClickTime= System.currentTimeMillis();
+            if (currentClickTime-lastClickTime<2000){
+                finish();
+            }else {
+                Toast.makeText(this,"再按一次后退键",Toast.LENGTH_SHORT).show();
+                lastClickTime = currentClickTime;
+            }
+        }
+    }
+
 }
