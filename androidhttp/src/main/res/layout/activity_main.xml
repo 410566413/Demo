@@ -9,10 +9,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.hawker.yangtianqi.androidhttp.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
 
     <Button
         android:layout_width="wrap_content"
@@ -29,6 +25,37 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageView"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentTop="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="获取json接口数据"
+        android:id="@+id/btnJsonString"
+        android:layout_above="@+id/btnPostFormData"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/btnDownPic"
+        android:layout_alignEnd="@+id/btnDownPic" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="提交表单数据"
+        android:id="@+id/btnPostFormData"
+        android:layout_above="@+id/btnDownPic"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/btnDownPic"
+        android:layout_alignEnd="@+id/btnDownPic" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/editText"
+        android:layout_above="@+id/btnJsonString"
+        android:layout_toEndOf="@+id/imageView"
+        android:layout_alignRight="@+id/btnJsonString"
+        android:layout_alignEnd="@+id/btnJsonString"
+        android:layout_toRightOf="@+id/imageView" />
 </RelativeLayout>

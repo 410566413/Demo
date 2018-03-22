@@ -7,8 +7,10 @@ import android.os.Looper;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -22,14 +24,20 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button button;
+    private Button btnDownPic;
+    private Button btnJsonString;
+    private Button btnPostFormData;
     private ImageView imageView;
+    private EditText editText;
     private final  static int SUCCESS_STATUS=1;
     private final  static int FAIL_STATUS=0;
     private final  static String TAG=MainActivity.class.getSimpleName();
     private String image_path = "http://www.baidu.com/img/bd_logo1.png";
+    private String json_path = "https://api.douban.com/v2/book/6548683";
 
     private OkHttpClient client;
+    private OkHttpUtil okHttpUtil;
+
     private Handler handler = new Handler(){
         @Override
         public void handleMessage(Message message){
@@ -52,13 +60,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        button = (Button) findViewById(R.id.btnDownPic);
+        btnDownPic = (Button) findViewById(R.id.btnDownPic);
+        btnJsonString = (Button) findViewById(R.id.btnJsonString);
+        btnPostFormData = (Button) findViewById(R.id.btnPostFormData);
         imageView = (ImageView) findViewById(R.id.imageView);
+        editText = (EditText) findViewById(R.id.editText);
         client = new OkHttpClient();
         // 使用get请求
         final Request request = new Request.Builder().get().url(image_path).build();
 
-        button.setOnClickListener(new View.OnClickListener(){
+        btnDownPic.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 client.newCall(request).enqueue(new Callback() {
@@ -84,5 +95,27 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnPostFormData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        okHttpUtil = OkHttpUtil.getInstance();
+        btnJsonString.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                okHttpUtil.asyncGetByURl(json_path, new OkHttpUtil.CallBackString() {
+                    @Override
+                    public void onResponse(String result) {
+                        //获取json字符串
+                        Log.i(TAG,result);
+                        editText.setText(result);
+                    }
+                });
+            }
+        });
     }
 }
